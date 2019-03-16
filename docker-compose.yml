@@ -4,3 +4,12 @@ services:
     build: ./mommy
     ports:
       - "5000:5000"
+  kiddopy:
+    build: ./kiddo-py
+    command: "pytest test_kid.py"
+    depends_on:
+      - mommy
+    links:
+      - mommy
+    volumes:
+      - .:/code/kiddo-py
