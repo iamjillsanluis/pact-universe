@@ -15,4 +15,9 @@ services:
       - daddy
       - mommy
     volumes:
-      - .:/code/kiddo-py
+      - ./kiddo-py:/code
+  kiddopy-test:
+    build: ./kiddo-py
+    command: "pytest test_contracts.py"
+    volumes:
+      - ./kiddo-py:/code

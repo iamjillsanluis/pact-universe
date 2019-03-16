@@ -1,0 +1,29 @@
+{
+  "consumer": {
+    "name": "Kid"
+  },
+  "provider": {
+    "name": "Daddy"
+  },
+  "interactions": [
+    {
+      "providerState": "some prep work by dad",
+      "description": "a request for food",
+      "request": {
+        "method": "get",
+        "path": "/food"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "answer": "yes"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
