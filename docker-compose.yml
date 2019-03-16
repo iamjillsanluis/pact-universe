@@ -1,5 +1,9 @@
 version: '3'
 services:
+  daddy:
+    build: ./daddy
+    ports:
+      - "4567:4567"
   mommy:
     build: ./mommy
     ports:
