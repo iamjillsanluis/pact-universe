@@ -21,3 +21,24 @@ services:
     command: "pytest test_contracts.py"
     volumes:
       - ./kiddo-py:/code
+  postgres:
+    image: postgres
+    healthcheck:
+      test: psql postgres --command "select 1" -U postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: pact
+      POSTGRES_PASSWORD: super_secret
+      POSTGRES_DB: pact_broker
+  pact-broker:
+    image: dius/pact-broker
+    links:
+      - postgres
+    ports:
+      - "8087:80"
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: pact
+      PACT_BROKER_DATABASE_PASSWORD: super_secret
+      PACT_BROKER_DATABASE_HOST: postgres
+      PACT_BROKER_DATABASE_NAME: pact_broker
