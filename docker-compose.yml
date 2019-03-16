@@ -12,8 +12,7 @@ services:
     build: ./kiddo-py
     command: "pytest test_kid.py"
     depends_on:
-      - mommy
-    links:
+      - daddy
       - mommy
     volumes:
       - .:/code/kiddo-py
